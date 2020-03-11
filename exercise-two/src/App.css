@@ -46,3 +46,32 @@
   font-size: 24px;
   line-height: 24px;
 }
+
+.Header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.CitiesNav {
+  display: flex;
+
+}
+
+.CitiesNav a { /*anchor tags by default are display in-line*/
+  border-bottom: 1px solid transparent;
+  color: black;
+  display: block;
+  padding: 5px 10px;
+  text-decoration: none;
+  transition: border-bottom 400ms ease;
+}
+
+.CitiesNav a:hover {
+  border-bottom: 1px solid black;
+}
+
+.CitiesNav .active {
+  color: green;
+}

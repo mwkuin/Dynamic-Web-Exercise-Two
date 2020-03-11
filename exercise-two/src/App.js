@@ -1,18 +1,26 @@
 import React from 'react';
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 //Styles
 import './App.css';
 
-//Components
 import Header from './components/header';
-import Home from './containers/home';
+import Home from './containers/home'
 
 function App() {
   return (
     <div className="SiteWrapper">
       <Header />
-      <Home />
-
+        <Router>
+          <Switch>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </Router>
     </div>
   );
 }

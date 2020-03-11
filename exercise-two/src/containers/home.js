@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+import { useHistory } from "react-router-dom";
+
 //API Keys
 const defaultKey = "ae9b5e85a40cf839b952f643c946c305";
 
@@ -9,6 +11,22 @@ function Home () {
   const [city, setCity] = useState("Seoul");
   const [current, setCurrent] = useState("");
   const [currentWind, setWind] = useState("");
+  const [cloudiness, setCloudiness] = useState(0);
+  const [weatherType, setWeatherType] = useState("Clouds");
+
+  let history = useHistory();
+
+  useEffect(() => {
+  //Get city from URL
+  let searchParams = history.location.search;
+  const urlParams = new URLSearchParams(searchParams);
+  let city = urlParams.get("city");
+  if (city) { //if statement to make sure city value exists
+    setCity(city);
+  }
+  setCity(city);
+}, [history]);
+
 
   useEffect(() => {
     // Make a request for the weather by city
@@ -25,12 +43,20 @@ axios
     console.log(error);
   })
 
-  }, []);
+}, [city]);
+
+
 
 useEffect(() => {
+
   if (weatherData.main) {
     setCurrent(weatherData.main);
     setWind(weatherData.wind);
+    // setCloudiness(weatherData.clouds.all);
+    let cloudinessValue = weatherData.clouds.all / 200;
+    setCloudiness(cloudinessValue);
+
+    setWeatherType(weatherData.weather[0].main);
 
   }
 }, [weatherData]);
@@ -38,7 +64,7 @@ useEffect(() => {
 
 
   return (
-    <div className="Home">
+    <div className="Home" style={{ backgroundColor: `rgba(0,0,0,${cloudiness})` }}>
     <h1>Weather in {city}</h1>
       <div className="WeatherInfo">
         <div className="WeatherInfo_Image">
