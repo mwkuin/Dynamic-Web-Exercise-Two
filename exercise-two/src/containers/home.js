@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
 import { useHistory } from "react-router-dom";
+
+import Header from "../components/header";
+import WeatherImage from "../components/WeatherImage";
 
 //API Keys
 const defaultKey = "ae9b5e85a40cf839b952f643c946c305";
@@ -67,8 +69,9 @@ useEffect(() => {
     <div className="Home" style={{ backgroundColor: `rgba(0,0,0,${cloudiness})` }}>
     <h1>Weather in {city}</h1>
       <div className="WeatherInfo">
-        <div className="WeatherInfo_Image">
-        <img src="" alt="" />
+        <WeatherImage weatherType={weatherType} />
+        // <div className="WeatherInfo_Image">
+        // <img src="" alt="" />
 
         </div>
         <div className="WeatherInfo_Data">
