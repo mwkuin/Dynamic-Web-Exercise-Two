@@ -12,6 +12,7 @@
 
 .Home h1{
   text-align: center;
+
 }
 
 .WeatherInfo {
@@ -22,6 +23,10 @@
 
 .WeatherInfo_Image {
   flex-basis: 50%;
+  font-size: 100px;
+  padding: 30px;
+
+
 }
 
 .WeatherInfo_Data {
@@ -32,13 +37,14 @@
   font-size: 140px;
   font-weight: bold;
   line-height: 140px;
-  margin: 0; /*browsers suck*/
+  margin: 0;
 }
 
 .WeatherInfo_Data .CurrentTemperature .CurrentTemperatureLabel {
   margin: 0;
   font-weight: bold;
   text-transform: uppercase;
+  padding-top: 30px;
 
 }
 
@@ -73,5 +79,5 @@
 }
 
 .CitiesNav .active {
-  color: green;
+  color: blue;
 }

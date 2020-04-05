@@ -26,7 +26,6 @@ function Home () {
   if (city) { //if statement to make sure city value exists
     setCity(city);
   }
-  setCity(city);
 }, [history]);
 
 
@@ -54,10 +53,9 @@ useEffect(() => {
   if (weatherData.main) {
     setCurrent(weatherData.main);
     setWind(weatherData.wind);
-    // setCloudiness(weatherData.clouds.all);
+
     let cloudinessValue = weatherData.clouds.all / 200;
     setCloudiness(cloudinessValue);
-
     setWeatherType(weatherData.weather[0].main);
 
   }
@@ -70,30 +68,26 @@ useEffect(() => {
     <h1>Weather in {city}</h1>
       <div className="WeatherInfo">
         <WeatherImage weatherType={weatherType} />
-        // <div className="WeatherInfo_Image">
-        // <img src="" alt="" />
+      </div>
 
-        </div>
         <div className="WeatherInfo_Data">
           <div className="CurrentTemperature">
-            <p className="CurrentTemperatureTemp">{current.temp}&#176;</p> // eatherData.main && weatherData.main.temp brackets indicates it's executing javascript versus html
+            <p className="CurrentTemperatureTemp">{current.temp}&#176;</p>
             <p className="CurrentTemperatureLabel">Current Temperature</p>
           </div>
         <div className="OtherTemperatures">
           <p>
-            high temp: {current.temp_max}&#176;
+            High temp: {current.temp_max}&#176;
           </p>
           <p>
-            low temp: {current.temp_min}&#176;
+            Low temp: {current.temp_min}&#176;
           </p>
         </div>
-          <p> humidty: {current.humidity}%</p> //on the first render of weatherData is an empty object, so && to keep going
-          <p> wind: {currentWind.speed}mph</p>
-
+          <p> Humidty: {current.humidity}%</p>
+          <p> Wind: {currentWind.speed}mph</p>
 
         </div>
       </div>
-    </div>
   );
 }
 
